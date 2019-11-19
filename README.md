@@ -42,7 +42,9 @@
 
             ```console
             7z x ./data/img_celeba/img_celeba.7z/img_celeba.7z.001 -o./data/img_celeba/
+
             unzip ./data/img_celeba/annotations.zip -d ./data/img_celeba/
+
             python ./scripts/align.py
             ```
 
