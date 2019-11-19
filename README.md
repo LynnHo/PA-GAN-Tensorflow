@@ -11,7 +11,7 @@
 
 # Usage
 
-- Prerequisites
+- Environment
 
     - Python 3.6
 
@@ -28,7 +28,7 @@
         conda install -c anaconda tensorflow-gpu=1.13
         ``` -->
 
-- Dataset
+- Data Preparation
 
     - [CelebA](http://openaccess.thecvf.com/content_iccv_2015/papers/Liu_Deep_Learning_Face_ICCV_2015_paper.pdf)-unaligned (10.2GB, higher quality than the aligned data)
 
