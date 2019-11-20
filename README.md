@@ -4,7 +4,7 @@
 
 # <p align="center"> PA-GAN </p>
 
-**Tensorflow** implementation of **PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing
+**TensorFlow** implementation of **PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing
 
 <p align="center"> <img src="./pics/schema.jpg" width="100%" /> </p>
 
@@ -15,10 +15,9 @@
 
     - Python 3.6
 
-    - Tensorflow 1.13
+    - TensorFlow 1.13, TensorFlow Graphics
 
     - OpenCV, scikit-image, tqdm, oyaml
-
 
     - (we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below)
 
