@@ -69,14 +69,14 @@
 
     - testing
 
-        - **single** attribute editing
+        - **single** attribute editing (inversion)
 
             ```console
             CUDA_VISIBLE_DEVICES=0 python test.py
             ```
 
 
-        - **multiple** attribute editing example
+        - **multiple** attribute editing (inversion) example
 
             ```console
             CUDA_VISIBLE_DEVICES=0 python test_multi.py --test_att_names Bushy_Eyebrows Mustache
@@ -100,17 +100,18 @@
 
     - testing
 
-        - **single** attribute editing
+        - **single** attribute editing (inversion)
 
             ```console
             CUDA_VISIBLE_DEVICES=0 python test.py --experiment_name PA-GAN
             ```
 
 
-        - **multiple** attribute editing example
+        - **multiple** attribute editing example (inversion)
 
             ```console
-            CUDA_VISIBLE_DEVICES=0 python test_multi.py --test_att_names Bushy_Eyebrows Mustache --experiment_name PA-GAN
+            CUDA_VISIBLE_DEVICES=0 python test_multi.py \
+            --test_att_names Bushy_Eyebrows Mustache --experiment_name PA-GAN
             ```
 
 
