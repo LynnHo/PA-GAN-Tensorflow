@@ -111,16 +111,19 @@ def sample_graph():
             e_opt_list.append(e_opt)
             ms_opt_list.append(ms_opt)
 
-            # resize all masks to the same size
-            for ms_opt in ms_opt_list:  # attribute axis
-                for i, m_opt in enumerate(ms_opt):  # mask level axis
-                    m_opt_resized = []
-                    for m_j_opt in m_opt:  # batch axis
-                        m_opt_resized.append(im.imresize(m_j_opt * 2 - 1, (args.crop_size, args.crop_size)))
-                    ms_opt[i] = np.concatenate([np.array(m_opt_resized)] * 3, axis=-1)
-            ms_opt_list = [np.full_like(ms_opt_list[0], -1.0)] + ms_opt_list
-            ms_opt_list = list(np.transpose(ms_opt_list, (1, 0, 2, 3, 4, 5)))[::-1]
-            sample_m = np.transpose([x_opt_list, e_opt_list] + ms_opt_list, (2, 0, 3, 1, 4, 5))
+            if args.with_mask:
+                # resize all masks to the same size
+                for ms_opt in ms_opt_list:  # attribute axis
+                    for i, m_opt in enumerate(ms_opt):  # mask level axis
+                        m_opt_resized = []
+                        for m_j_opt in m_opt:  # batch axis
+                            m_opt_resized.append(im.imresize(m_j_opt * 2 - 1, (args.crop_size, args.crop_size)))
+                        ms_opt[i] = np.concatenate([np.array(m_opt_resized)] * 3, axis=-1)
+                ms_opt_list = [np.full_like(ms_opt_list[0], -1.0)] + ms_opt_list
+                ms_opt_list = list(np.transpose(ms_opt_list, (1, 0, 2, 3, 4, 5)))[::-1]
+                sample_m = np.transpose([x_opt_list, e_opt_list] + ms_opt_list, (2, 0, 3, 1, 4, 5))
+            else:
+                sample_m = np.transpose([x_opt_list], (2, 0, 3, 1, 4, 5))
             sample_m = np.reshape(sample_m, (sample_m.shape[0], -1, sample_m.shape[3] * sample_m.shape[4], sample_m.shape[5]))
 
             for s in sample_m:

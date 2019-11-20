@@ -17,16 +17,28 @@
 
     - Tensorflow 1.13
 
-    - OpenCV 3, scikit-image, oyaml, tqdm
+    - OpenCV, scikit-image, tqdm, oyaml
 
 
-<!--     - (we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below)
+    - (we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below)
 
         ```console
         conda create -n PA-GAN python=3.6
+
         source activate PA-GAN
+
         conda install -c anaconda tensorflow-gpu=1.13
-        ``` -->
+
+        pip install tensorflow-graphics-gpu --no-deps
+
+        conda install -c anaconda opencv
+
+        conda install -c anaconda scikit-imagey
+
+        conda install -c anaconda tqdm
+
+        conda install -c conda-forge oyaml
+        ```
 
 - Data Preparation
 
