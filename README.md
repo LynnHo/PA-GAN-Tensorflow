@@ -88,7 +88,7 @@
         CUDA_VISIBLE_DEVICES='' tensorboard --logdir ./output/default/summaries --port 6006
         ```
 
-- [Trained Weights](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (move to **./output/PA-GAN_128.zip**)
+- Using [Trained Weights](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (move to **./output/PA-GAN.zip**)
 
     - *the checkpoint inludes G and D and the state of the optimizer, the exact size of the generator is 156MB*
 
