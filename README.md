@@ -32,7 +32,7 @@
 
         conda install -c anaconda opencv
 
-        conda install -c anaconda scikit-imagey
+        conda install -c anaconda scikit-image
 
         conda install -c anaconda tqdm
 
