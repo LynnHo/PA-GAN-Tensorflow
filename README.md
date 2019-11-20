@@ -19,7 +19,7 @@
 
     - OpenCV, scikit-image, tqdm, oyaml
 
-    - (we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below)
+    - *we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below*
 
         ```console
         conda create -n PA-GAN python=3.6
