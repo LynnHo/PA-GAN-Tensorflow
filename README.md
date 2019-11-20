@@ -87,3 +87,31 @@
         ```console
         CUDA_VISIBLE_DEVICES='' tensorboard --logdir ./output/default/summaries --port 6006
         ```
+
+- [Trained Weights](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (move to **./output/PA-GAN_128.zip**)
+
+    - *the checkpoint inludes G and D and the state of the optimizer, the exact size of the generator is 156MB*
+
+    - unzip the file
+
+        ```console
+        unzip ./output/PA-GAN.zip -d ./output/
+        ```
+
+    - testing
+
+        - **single** attribute editing
+
+            ```console
+            CUDA_VISIBLE_DEVICES=0 python test.py --experiment_name PA-GAN
+            ```
+
+
+        - **multiple** attribute editing example
+
+            ```console
+            CUDA_VISIBLE_DEVICES=0 python test_multi.py --test_att_names Bushy_Eyebrows Mustache --experiment_name PA-GAN
+            ```
+
+
+
