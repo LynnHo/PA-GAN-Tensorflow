@@ -90,7 +90,7 @@
 
 - Using [Trained Weights](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (move to **./output/PA-GAN.zip**)
 
-    - *the checkpoint inludes G and D and the state of the optimizer, the exact size of the generator is 156MB*
+    - *the checkpoint includes G and D and the state of the optimizer, the exact size of the generator is 156MB*
 
     - unzip the file
 
