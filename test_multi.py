@@ -1,4 +1,5 @@
 import functools
+import os
 
 import imlib as im
 import numpy as np
@@ -51,9 +52,6 @@ test_dataset, len_test_dataset = data.make_celeba_dataset(args.img_dir, args.tes
                                                           training=False, drop_remainder=False, shuffle=False, repeat=None)
 test_iter = test_dataset.make_one_shot_iterator()
 
-# model
-G = functools.partial(module.PAGANG(), dim=args.dim, weight_decay=args.weight_decay)
-
 
 # ==============================================================================
 # =                                   graph                                    =
@@ -64,13 +62,33 @@ def sample_graph():
     # =               graph                =
     # ======================================
 
-    # placeholders & inputs
-    xa = tf.placeholder(tf.float32, shape=[None, args.crop_size, args.crop_size, 3])
-    a_ = tf.placeholder(tf.float32, shape=[None, n_atts])
-    b_ = tf.placeholder(tf.float32, shape=[None, n_atts])
+    if not os.path.exists(py.join(output_dir, 'generator.pb')):
+        # model
+        G = functools.partial(module.PAGANG(), dim=args.dim, weight_decay=args.weight_decay)
 
-    # sample graph
-    x, e, ms, _ = G(xa, b_ - a_, training=False)
+        # placeholders & inputs
+        xa = tf.placeholder(tf.float32, shape=[None, args.crop_size, args.crop_size, 3])
+        a_ = tf.placeholder(tf.float32, shape=[None, n_atts])
+        b_ = tf.placeholder(tf.float32, shape=[None, n_atts])
+
+        # sample graph
+        x, e, ms, _ = G(xa, b_ - a_, training=False)
+    else:
+        # load freezed model
+        with tf.gfile.GFile(py.join(output_dir, 'generator.pb'), 'rb') as f:
+            graph_def = tf.GraphDef()
+            graph_def.ParseFromString(f.read())
+            tf.import_graph_def(graph_def, name='generator')
+
+        # placeholders & inputs
+        xa = sess.graph.get_tensor_by_name('generator/xa:0')
+        a_ = sess.graph.get_tensor_by_name('generator/a_:0')
+        b_ = sess.graph.get_tensor_by_name('generator/b_:0')
+
+        # sample graph
+        x = sess.graph.get_tensor_by_name('generator/xb:0')
+        e = sess.graph.get_tensor_by_name('generator/e:0')
+        ms = sess.graph.get_operation_by_name('generator/ms').outputs
 
     # ======================================
     # =            run function            =
@@ -141,12 +159,13 @@ sample = sample_graph()
 # ==============================================================================
 
 # checkpoint
-checkpoint = tl.Checkpoint(
-    {v.name: v for v in tf.global_variables()},
-    py.join(output_dir, 'checkpoints'),
-    max_to_keep=1
-)
-checkpoint.restore().run_restore_ops()
+if not os.path.exists(py.join(output_dir, 'generator.pb')):
+    checkpoint = tl.Checkpoint(
+        {v.name: v for v in tf.global_variables()},
+        py.join(output_dir, 'checkpoints'),
+        max_to_keep=1
+    )
+    checkpoint.restore().run_restore_ops()
 
 sample()
 
