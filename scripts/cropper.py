@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import numpy as np
 
 
@@ -56,40 +52,19 @@ def align_crop_opencv(img,
     else:
         raise Exception('Invalid `crop_size`! `crop_size` should be 1. int for (crop_size, crop_size) or 2. (int, int) for (crop_size_h, crop_size_w)!')
 
-    # move
-    move = np.array([img.shape[1] // 2, img.shape[0] // 2])
-
-    # pad border
-    h_border = img.shape[0] - crop_size_h
-    w_border = img.shape[1] - crop_size_w
-    if h_border < 0:
-        h_half = (-h_border + 1) // 2
-        img = np.pad(img, ((h_half, h_half), (0, 0), (0, 0)), mode=mode)
-        src_landmarks += np.array([0, h_half])
-        move += np.array([0, h_half])
-    if w_border < 0:
-        w_half = (-w_border + 1) // 2
-        img = np.pad(img, ((0, 0), (w_half, w_half), (0, 0)), mode=mode)
-        src_landmarks += np.array([w_half, 0])
-        move += np.array([w_half, 0])
-
     # estimate transform matrix
-    trg_landmarks = standard_landmarks * max(crop_size_h, crop_size_w) * face_factor + move
+    trg_landmarks = standard_landmarks * max(crop_size_h, crop_size_w) * face_factor + np.array([crop_size_w // 2, crop_size_h // 2])
     if align_type == 'affine':
         tform = cv2.estimateAffine2D(trg_landmarks, src_landmarks, ransacReprojThreshold=np.Inf)[0]
     else:
         tform = cv2.estimateAffinePartial2D(trg_landmarks, src_landmarks, ransacReprojThreshold=np.Inf)[0]
 
     # warp image by given transform
-    output_shape = (crop_size_h // 2 + move[1] + 1, crop_size_w // 2 + move[0] + 1)
-    img_align = cv2.warpAffine(img, tform, output_shape[::-1], flags=cv2.WARP_INVERSE_MAP + inter[order], borderMode=border[mode])
-
-    # crop
-    img_crop = img_align[-crop_size_h:, -crop_size_w:]
+    output_shape = (crop_size_h, crop_size_w)
+    img_crop = cv2.warpAffine(img, tform, output_shape[::-1], flags=cv2.WARP_INVERSE_MAP + inter[order], borderMode=border[mode])
 
     # get transformed landmarks
     tformed_landmarks = cv2.transform(np.expand_dims(src_landmarks, axis=0), cv2.invertAffineTransform(tform))[0]
-    tformed_landmarks -= [img_align.shape[1] - crop_size_w, img_align.shape[0] - crop_size_h]
 
     return img_crop, tformed_landmarks
 
