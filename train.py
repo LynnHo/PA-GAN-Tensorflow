@@ -37,7 +37,8 @@ py.arg('--dim', type=int, default=64)
 
 py.arg('--n_d', type=int, default=5)  # # d updates per g update
 py.arg('--adversarial_loss_mode', choices=['gan', 'hinge_v1', 'hinge_v2', 'lsgan', 'wgan'], default='wgan')
-py.arg('--gradient_penalty_mode', choices=['none', 'dragan', 'dragan-lp', 'wgan-gp', 'wgan-lp'], default='wgan-lp')
+py.arg('--gradient_penalty_mode', choices=['none', '1-gp', '0-gp', 'lp'], default='lp')
+py.arg('--gradient_penalty_sample_mode', choices=['line', 'real', 'fake', 'dragan'], default='line')
 py.arg('--d_gradient_penalty_weight', type=float, default=10.0)
 py.arg('--d_attribute_loss_weight', type=float, default=1.0)
 py.arg('--g_attribute_loss_weight', type=float, default=20.0)
@@ -114,7 +115,7 @@ def D_train_graph():
 
     # discriminator losses
     xa_loss_gan, xb_loss_gan = d_loss_fn(xa_logit_gan, xb_logit_gan)
-    gp = tfprob.gradient_penalty(lambda x: D(x)[0], xa, xb, args.gradient_penalty_mode)
+    gp = tfprob.gradient_penalty(lambda x: D(x)[0], xa, xb, args.gradient_penalty_mode, args.gradient_penalty_sample_mode)
     xa_loss_att = tf.losses.sigmoid_cross_entropy(a, xa_logit_att)
     reg_loss = tf.reduce_sum(D.func.reg_losses)
 

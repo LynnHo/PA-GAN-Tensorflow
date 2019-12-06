@@ -81,38 +81,3 @@ def get_adversarial_losses_fn(mode):
         return get_lsgan_losses_fn()
     elif mode == 'wgan':
         return get_wgan_losses_fn()
-
-
-def gradient_penalty(f, real, fake, mode, p_norm=2):
-    def _gradient_penalty(f, real, fake=None, penalty_type='gp', p_norm=2):
-        def _interpolate(a, b=None):
-            if b is None:   # interpolation in DRAGAN
-                beta = tf.random.uniform(shape=tf.shape(a), minval=0, maxval=1)
-                b = a + 0.5 * tf.math.reduce_std(a) * beta
-            shape = [tf.shape(a)[0]] + [1] * (a.shape.ndims - 1)
-            alpha = tf.random.uniform(shape=shape, minval=0, maxval=1)
-            inter = a + alpha * (b - a)
-            inter.set_shape(a.shape)
-            return inter
-
-        x = _interpolate(real, fake)
-        pred = f(x)
-        grad = tf.gradients(pred, x)[0]
-        norm = tf.norm(tf.reshape(grad, [tf.shape(grad)[0], -1]), axis=1)
-
-        if penalty_type == 'gp':
-            gp = tf.reduce_mean((norm - 1)**2)
-        elif penalty_type == 'lp':
-            gp = tf.reduce_mean(tf.maximum(norm - 1, 0)**2)
-
-        return gp
-
-    if mode == 'none':
-        gp = tf.constant(0, dtype=real.dtype)
-    elif mode in ['dragan', 'dragan-gp', 'dragan-lp']:
-        penalty_type = 'gp' if mode == 'dragan' else mode[-2:]
-        gp = _gradient_penalty(f, real, penalty_type=penalty_type, p_norm=p_norm)
-    elif mode in ['wgan-gp', 'wgan-lp']:
-        gp = _gradient_penalty(f, real, fake, penalty_type=mode[-2:], p_norm=p_norm)
-
-    return gp
