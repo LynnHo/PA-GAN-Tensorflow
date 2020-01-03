@@ -115,6 +115,8 @@
             ```
 
     - other weights
+
         - [PA-GAN_generator_only.zip](https://drive.google.com/file/d/1efawteX6H92ZOqhXePm0uQ4itMOV9CSQ/view?usp=sharing)
+
         - [PA-GAN_256_generator_only.zip](https://drive.google.com/open?id=1MSL9qac9kQKMtChP8D4pjiYs6lJWat9b)
 

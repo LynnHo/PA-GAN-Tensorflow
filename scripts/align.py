@@ -16,6 +16,7 @@ import tqdm
 # ==============================================================================
 # =                                      param                                 =
 # ==============================================================================
+
 parser = argparse.ArgumentParser()
 # main
 parser.add_argument('--img_dir', dest='img_dir', default='./data/img_celeba/img_celeba')
@@ -39,6 +40,7 @@ args = parser.parse_args()
 # ==============================================================================
 # =                                opencv first                                =
 # ==============================================================================
+
 _DEAFAULT_JPG_QUALITY = 95
 try:
     import cv2
@@ -57,9 +59,6 @@ except:
 # ==============================================================================
 # =                                     run                                    =
 # ==============================================================================
-save_dir = os.path.join(args.save_dir, 'align_size(%d,%d)_move(%.3f,%.3f)_face_factor(%.3f)_%s' % (args.crop_size_h, args.crop_size_w, args.move_h, args.move_w, args.face_factor, args.save_format), 'data')
-if not os.path.isdir(save_dir):
-    os.makedirs(save_dir)
 
 # count landmarks
 with open(args.landmark_file) as f:
@@ -72,6 +71,12 @@ landmarks = np.genfromtxt(args.landmark_file, dtype=np.float, usecols=range(1, n
 standard_landmark = np.genfromtxt(args.standard_landmark_file, dtype=np.float).reshape(n_landmark, 2)
 standard_landmark[:, 0] += args.move_w
 standard_landmark[:, 1] += args.move_h
+
+# data dir
+save_dir = os.path.join(args.save_dir, 'align_size(%d,%d)_move(%.3f,%.3f)_face_factor(%.3f)_%s' % (args.crop_size_h, args.crop_size_w, args.move_h, args.move_w, args.face_factor, args.save_format))
+data_dir = os.path.join(save_dir, 'data')
+if not os.path.isdir(data_dir):
+    os.makedirs(data_dir)
 
 
 def work(i):  # a single work
@@ -88,39 +93,30 @@ def work(i):  # a single work
                                                      mode=args.mode)
 
             name = os.path.splitext(img_names[i])[0] + '.' + args.save_format
-            path = os.path.join(save_dir, name)
+            path = os.path.join(data_dir, name)
             if not os.path.isdir(os.path.split(path)[0]):
                 os.makedirs(os.path.split(path)[0])
             imwrite(path, img_crop)
 
             tformed_landmarks.shape = -1
-            txt_name = os.path.splitext(img_names[i])[0] + '.txt'
-            txt_path = os.path.join(save_dir, txt_name)
-            with open(txt_path, 'w') as f:
-                f.write(('%s' + ' %.1f' * n_landmark * 2 + '\n') % ((name, ) + tuple(tformed_landmarks)))
+            name_landmark_str = ('%s' + ' %.1f' * n_landmark * 2) % ((name, ) + tuple(tformed_landmarks))
             succeed = True
             break
         except:
             succeed = False
-    if not succeed:
+    if succeed:
+        return name_landmark_str
+    else:
         print('%s fails!' % img_names[i])
 
+
 pool = Pool(args.n_worker)
-for _ in tqdm.tqdm(pool.imap(work, range(len(img_names))), total=len(img_names)):
-    pass
+name_landmark_strs = list(tqdm.tqdm(pool.imap(work, range(len(img_names))), total=len(img_names)))
 pool.close()
 pool.join()
 
-landmarks_path = os.path.join(args.save_dir, 'align_size(%d,%d)_move(%.3f,%.3f)_face_factor(%.3f)_%s' % (args.crop_size_h, args.crop_size_w, args.move_h, args.move_w, args.face_factor, args.save_format), 'landmark.txt')
+landmarks_path = os.path.join(save_dir, 'landmark.txt')
 with open(landmarks_path, 'w') as f:
-    lines = []
-    for i in range(len(img_names)):
-        try:
-            txt_name = os.path.splitext(img_names[i])[0] + '.txt'
-            txt_path = os.path.join(save_dir, txt_name)
-            with open(txt_path) as f_tmp:
-                lines.append(f_tmp.readline())
-            os.remove(txt_path)
-        except:
-            pass
-    f.writelines(lines)
+    for name_landmark_str in name_landmark_strs:
+        if name_landmark_str:
+            f.write(name_landmark_str + '\n')
