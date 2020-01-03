@@ -107,7 +107,7 @@
             ```
 
 
-        - **multiple** attribute editing example (inversion)
+        - **multiple** attribute editing (inversion) example
 
             ```console
             CUDA_VISIBLE_DEVICES=0 python test_multi.py \
