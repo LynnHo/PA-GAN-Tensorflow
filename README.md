@@ -19,7 +19,7 @@
 
     - OpenCV, scikit-image, tqdm, oyaml
 
-    - *we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with the commands below*
+    - *we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with commands below*
 
         ```console
         conda create -n PA-GAN python=3.6
@@ -88,11 +88,22 @@
         CUDA_VISIBLE_DEVICES='' tensorboard --logdir ./output/default/summaries --port 6006
         ```
 
-- Using [Trained Weights](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (move to **./output/PA-GAN.zip**)
+- Using Trained Weights
 
-    - *the checkpoint includes G and D and the state of the optimizer, the exact size of the generator is 156MB*
+    - alternative trained weights (move to **./output/\*.zip**)
 
-    - unzip the file
+        - [PA-GAN.zip](https://drive.google.com/file/d/1idZftl-IqNsBUkn2tSvgiCVMoZay40Km/view?usp=sharing) (953.9MB)
+
+            - *including G, D, and the state of the optimizer*
+
+        - [PA-GAN_generator_only.zip](https://drive.google.com/file/d/1efawteX6H92ZOqhXePm0uQ4itMOV9CSQ/view?usp=sharing) (151.5MB)
+
+            - *G only*
+
+        - [PA-GAN_256_generator_only.zip](https://drive.google.com/open?id=1MSL9qac9kQKMtChP8D4pjiYs6lJWat9b) (70.8MB)
+
+
+    - unzip the file (PA-GAN.zip for example)
 
         ```console
         unzip ./output/PA-GAN.zip -d ./output/
@@ -113,10 +124,3 @@
             CUDA_VISIBLE_DEVICES=0 python test_multi.py \
             --test_att_names Bushy_Eyebrows Mustache --experiment_name PA-GAN
             ```
-
-    - other weights
-
-        - [PA-GAN_generator_only.zip](https://drive.google.com/file/d/1efawteX6H92ZOqhXePm0uQ4itMOV9CSQ/view?usp=sharing)
-
-        - [PA-GAN_256_generator_only.zip](https://drive.google.com/open?id=1MSL9qac9kQKMtChP8D4pjiYs6lJWat9b)
-
