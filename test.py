@@ -16,6 +16,7 @@ import module
 # =                                   param                                    =
 # ==============================================================================
 
+py.arg('--img_dir', default='./data/img_celeba/aligned/align_size(572,572)_move(0.250,0.000)_face_factor(0.450)_jpg/data')
 py.arg('--test_label_path', default='./data/img_celeba/test_label.txt')
 py.arg('--with_mask', default=False)
 py.arg('--test_int', type=float, default=2)
