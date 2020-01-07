@@ -6,6 +6,7 @@ import tensorflow_graphics as tfg
 
 import utils
 
+
 conv = functools.partial(slim.conv2d, activation_fn=None)
 dconv = functools.partial(slim.conv2d_transpose, activation_fn=None)
 fc = functools.partial(slim.fully_connected, activation_fn=None)
