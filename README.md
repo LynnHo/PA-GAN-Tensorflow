@@ -15,11 +15,11 @@
 
     - Python 3.6
 
-    - TensorFlow 1.13, TensorFlow Graphics
+    - TensorFlow 1.13+, TensorFlow Graphics
 
     - OpenCV, scikit-image, tqdm, oyaml
 
-    - *we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can build the PA-GAN environment with commands below*
+    - *we recommend [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers), then you can create the PA-GAN environment with commands below*
 
         ```console
         conda create -n PA-GAN python=3.6
@@ -59,7 +59,13 @@
             python ./scripts/align.py
             ```
 
-- Commands
+- Run PA-GAN
+
+    - *NOTICE: if you create a new conda environment, remember to activate it before any command*
+
+        ```console
+        source activate PA-GAN
+        ```
 
     - training
 

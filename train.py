@@ -237,16 +237,16 @@ def sample_graph():
     save_dir = './output/%s/samples_training' % args.experiment_name
     py.mkdir(save_dir)
 
-    # data for sampling
-    xa_ipt, a_ipt = sess.run(val_iter.get_next())
-    b_ipt_list = [a_ipt]  # the first is for reconstruction
-    for i in range(n_atts):
-        tmp = np.array(a_ipt, copy=True)
-        tmp[:, i] = 1 - tmp[:, i]   # inverse attribute
-        tmp = data.check_attribute_conflict(tmp, args.att_names[i], args.att_names)
-        b_ipt_list.append(tmp)
-
     def run(epoch, iter):
+        # data for sampling
+        xa_ipt, a_ipt = sess.run(val_iter.get_next())
+        b_ipt_list = [a_ipt]  # the first is for reconstruction
+        for i in range(n_atts):
+            tmp = np.array(a_ipt, copy=True)
+            tmp[:, i] = 1 - tmp[:, i]   # inverse attribute
+            tmp = data.check_attribute_conflict(tmp, args.att_names[i], args.att_names)
+            b_ipt_list.append(tmp)
+
         x_opt_list = [xa_ipt]
         e_opt_list = [np.full_like(xa_ipt, -1.0)]
         ms_opt_list = []
