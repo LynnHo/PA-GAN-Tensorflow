@@ -108,15 +108,15 @@
 
     - alternative trained weights (move to **./output/\*.zip**)
 
-        - [PA-GAN_128.zip](https://drive.google.com/file/d/1l_IKnKHiHvyeK8blg8oY1Dvu2TdBFyCr/view?usp=sharing) (953.9MB)
+        - [PA-GAN_128.zip](https://drive.google.com/open?id=1vIiDDCzwIhkibmmSbEZdrsdHQDwm8DX7) (953.9MB)
 
             - *including G, D, and the state of the optimizer*
 
-        - [PA-GAN_128_generator_only.zip](https://drive.google.com/file/d/1l_IKnKHiHvyeK8blg8oY1Dvu2TdBFyCr/view?usp=sharing) (151.5MB)
+        - [PA-GAN_128_generator_only.zip](https://drive.google.com/open?id=1vIiDDCzwIhkibmmSbEZdrsdHQDwm8DX7) (151.5MB)
 
             - *G only*
 
-        - [PA-GAN_256_generator_only.zip](https://drive.google.com/file/d/1wBmsBSxK04VMo2A_F9mEnLyF011OpsxP/view?usp=sharing) (70.8MB)
+        - [PA-GAN_256_generator_only.zip](https://drive.google.com/open?id=1wBmsBSxK04VMo2A_F9mEnLyF011OpsxP) (70.8MB)
 
 
     - unzip the file (PA-GAN_128.zip for example)
