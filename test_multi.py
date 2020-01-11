@@ -96,11 +96,11 @@ def sample_graph():
     # ======================================
 
     if args.with_mask:
-        save_dir = py.join('./output/%s/samples_testing_multi_with_mask' % args.experiment_name, '')
+        save_dir = './output/%s/samples_testing_multi_with_mask' % args.experiment_name
     else:
-        save_dir = py.join('./output/%s/samples_testing_multi' % args.experiment_name, '')
+        save_dir = './output/%s/samples_testing_multi' % args.experiment_name
     tmp = ''
-    for i, (test_att_name, test_int) in enumerate(zip(args.test_att_names, args.test_ints)):
+    for test_att_name, test_int in zip(args.test_att_names, args.test_ints):
         tmp += '_%s_%s' % (test_att_name, '{:g}'.format(test_int))
     save_dir = py.join(save_dir, tmp[1:])
     py.mkdir(save_dir)
