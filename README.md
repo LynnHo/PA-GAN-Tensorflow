@@ -108,7 +108,7 @@
 
     - alternative trained weights (move to **./output/\*.zip**)
 
-        - [PA-GAN_128.zip](https://drive.google.com/open?id=1vIiDDCzwIhkibmmSbEZdrsdHQDwm8DX7) (953.9MB)
+        - [PA-GAN_128.zip](https://drive.google.com/open?id=1l_IKnKHiHvyeK8blg8oY1Dvu2TdBFyCr) (953.9MB)
 
             - *including G, D, and the state of the optimizer*
 
