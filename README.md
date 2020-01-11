@@ -1,6 +1,6 @@
 <p align="center"> <img src="./pics/overview.jpg" width="45%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./pics/mask.jpg" width="45%"> </p>
 
----
+<hr style="height:1px" />
 
 # <p align="center"> PA-GAN </p>
 
@@ -70,7 +70,9 @@
     - training
 
         ```console
-        CUDA_VISIBLE_DEVICES=0 python train.py
+        CUDA_VISIBLE_DEVICES=0 \
+        python train.py \
+        --experiment_name PA-GAN_128
         ```
 
     - testing
@@ -78,20 +80,28 @@
         - **single** attribute editing (inversion)
 
             ```console
-            CUDA_VISIBLE_DEVICES=0 python test.py
+            CUDA_VISIBLE_DEVICES=0 \
+            python test.py \
+            --experiment_name PA-GAN_128
             ```
 
 
         - **multiple** attribute editing (inversion) example
 
             ```console
-            CUDA_VISIBLE_DEVICES=0 python test_multi.py --test_att_names Bushy_Eyebrows Mustache
+            CUDA_VISIBLE_DEVICES=0 \
+            python test_multi.py \
+            --test_att_names Bushy_Eyebrows Mustache \
+            --experiment_name PA-GAN_128
             ```
 
     - loss visualization
 
         ```console
-        CUDA_VISIBLE_DEVICES='' tensorboard --logdir ./output/default/summaries --port 6006
+        CUDA_VISIBLE_DEVICES='' \
+        tensorboard \
+        --logdir ./output/default/summaries \
+        --port 6006
         ```
 
 - Using Trained Weights
@@ -115,18 +125,4 @@
         unzip ./output/PA-GAN.zip -d ./output/
         ```
 
-    - testing
-
-        - **single** attribute editing (inversion)
-
-            ```console
-            CUDA_VISIBLE_DEVICES=0 python test.py --experiment_name PA-GAN
-            ```
-
-
-        - **multiple** attribute editing (inversion) example
-
-            ```console
-            CUDA_VISIBLE_DEVICES=0 python test_multi.py \
-            --test_att_names Bushy_Eyebrows Mustache --experiment_name PA-GAN
-            ```
+    - testing (see above)
