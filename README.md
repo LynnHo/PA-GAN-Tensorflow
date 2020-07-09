@@ -1,4 +1,4 @@
-<p align="center"> <img src="./pics/overview.jpg" width="50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./pics/mask.jpg" width="45%"> </p>
+<p align="center"> <img src="./pics/overview.jpg" width="50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./pics/mask.jpg" width="45%"> </p>
 
 <hr style="height:1px" />
 
