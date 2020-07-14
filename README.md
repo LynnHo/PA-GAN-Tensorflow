@@ -2,9 +2,9 @@
 
 <hr style="height:1px" />
 
-# <p align="center"> PA-GAN </p>
+# <p align="center"> [PA-GAN](https://arxiv.org/abs/2007.05892) </p>
 
-**TensorFlow** implementation of [**PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing](https://arxiv.org/abs/2007.05892).
+**TensorFlow** implementation of [**PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing](https://arxiv.org/abs/2007.05892)
 &nbsp;
 &nbsp;
 &nbsp;
@@ -128,3 +128,15 @@
         ```
 
     - testing (see above)
+
+
+## Citation
+
+If you find [PA-GAN](https://arxiv.org/abs/2007.05892) useful in your research work, please consider citing:
+
+    @article{he2020pagan,
+      title={PA-GAN: Progressive Attention Generative Adversarial Network for Facial Attribute Editing},
+      author={He, Zhenliang and Kan, Meina and Zhang, Jichao and Shan, Shiguang},
+      journal={arXiv preprint arXiv:2007.05892},
+      year={2020}
+    }
