@@ -4,7 +4,7 @@
 
 # <p align="center"> PA-GAN </p>
 
-**TensorFlow** implementation of **PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing.
+**TensorFlow** implementation of [**PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing](https://arxiv.org/abs/2007.05892).
 &nbsp;
 &nbsp;
 &nbsp;
