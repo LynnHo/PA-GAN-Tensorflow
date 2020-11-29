@@ -42,6 +42,12 @@
         pip install tensorflow-graphics-gpu --no-deps
         ```
 
+    - *NOTICE: if you create a new conda environment, remember to activate it before any other command*
+
+        ```console
+        source activate PA-GAN
+        ```
+
 - Data Preparation
 
     - [CelebA](http://openaccess.thecvf.com/content_iccv_2015/papers/Liu_Deep_Learning_Face_ICCV_2015_paper.pdf)-unaligned (10.2GB, higher quality than the aligned data)
@@ -63,12 +69,6 @@
             ```
 
 - Run PA-GAN
-
-    - *NOTICE: if you create a new conda environment, remember to activate it before any command*
-
-        ```console
-        source activate PA-GAN
-        ```
 
     - training
 
