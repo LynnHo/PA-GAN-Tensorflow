@@ -29,15 +29,9 @@
 
         source activate PA-GAN
 
-        conda install -c anaconda opencv
-
-        conda install -c anaconda scikit-image
-
-        conda install -c anaconda tqdm
+        conda install opencv scikit-image tqdm tensorflow-gpu=1.13
 
         conda install -c conda-forge oyaml
-
-        conda install -c anaconda tensorflow-gpu=1.13
 
         pip install tensorflow-graphics-gpu --no-deps
         ```
