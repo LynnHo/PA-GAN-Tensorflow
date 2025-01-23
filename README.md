@@ -1,14 +1,17 @@
 <p align="center"> <img src="./pics/256.jpg" width="100%"> </p>
 <p align="center"> <img src="./pics/overview.jpg" width="50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./pics/mask.jpg" width="45%"> </p>
 
-<hr style="height:1px" />
 
-# <p align="center"> [PA-GAN](https://arxiv.org/abs/2007.05892) </p>
+<h1 align="center"> 
+    <a href="https://arxiv.org/pdf/2007.05892">PA-GAN</a>
+</h1>
 
-**TensorFlow** implementation of [**PA-GAN**: Progressive Attention Generative Adversarial Network for Facial Attribute Editing](https://arxiv.org/abs/2007.05892)
-&nbsp;
-&nbsp;
-&nbsp;
+> **<a href="https://arxiv.org/pdf/2007.05892">PA-GAN: Progressive Attention Generative Adversarial Network for Facial Attribute Editing</a>** \
+> [Zhenliang He](https://lynnho.github.io)<sup>1,2</sup>, [Meina Kan](https://scholar.google.is/citations?user=4AKCKKEAAAAJ)<sup>1,2</sup>, [Jichao Zhang](https://scholar.google.com/citations?user=SPEECTIAAAAJ&hl=zh-CN)<sup>1,2,3</sup>, [Shiguang Shan](https://scholar.google.com/citations?user=Vkzd7MIAAAAJ)<sup>1,2</sup> \
+> <sup>1</sup>Key Lab of Intelligent Information Processing, Institute of Computing Technology, CAS, China \
+> <sup>2</sup>University of Chinese Academy of Sciences, China \
+> <sup>3</sup>Peng Cheng Laboratory, Shenzhen, China
+
 <p align="center"> <img src="./pics/schema.jpg" width="100%" /> </p>
 
 
