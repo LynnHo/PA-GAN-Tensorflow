@@ -10,7 +10,7 @@
 > [Zhenliang He](https://lynnho.github.io)<sup>1,2</sup>, [Meina Kan](https://scholar.google.is/citations?user=4AKCKKEAAAAJ)<sup>1,2</sup>, [Jichao Zhang](https://scholar.google.com/citations?user=SPEECTIAAAAJ&hl=zh-CN)<sup>1,2,3</sup>, [Shiguang Shan](https://scholar.google.com/citations?user=Vkzd7MIAAAAJ)<sup>1,2</sup> \
 > <sup>1</sup>Key Lab of Intelligent Information Processing, Institute of Computing Technology, CAS, China \
 > <sup>2</sup>University of Chinese Academy of Sciences, China \
-> <sup>3</sup>Peng Cheng Laboratory, Shenzhen, China
+> <sup>3</sup>Peng Cheng Laboratory, China
 
 <p align="center"> <img src="./pics/schema.jpg" width="100%" /> </p>
 
