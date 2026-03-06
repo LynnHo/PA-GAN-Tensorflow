@@ -135,6 +135,6 @@ If you find [PA-GAN](https://arxiv.org/abs/2007.05892) useful in your research w
     @article{he2020pagan,
       title={PA-GAN: Progressive Attention Generative Adversarial Network for Facial Attribute Editing},
       author={He, Zhenliang and Kan, Meina and Zhang, Jichao and Shan, Shiguang},
-      journal={arXiv preprint arXiv:2007.05892},
+      journal={arXiv:2007.05892},
       year={2020}
     }
